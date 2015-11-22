@@ -2,8 +2,9 @@
 /Users/kdao/School/CMPE283_Project/src/main/java/com/models/utility/Constants.java
 /Users/kdao/School/CMPE283_Project/src/main/java/com/models/entity/Resources_Usages.java
 /Users/kdao/School/CMPE283_Project/src/main/java/com/models/entity/Resources.java
+/Users/kdao/School/CMPE283_Project/src/main/java/com/models/entity/WebSite.java
+/Users/kdao/School/CMPE283_Project/src/main/java/com/controller/ApplicationController.java
 /Users/kdao/School/CMPE283_Project/src/main/java/com/models/entity/Jobs.java
 /Users/kdao/School/CMPE283_Project/src/main/java/com/models/entity/Services.java
 /Users/kdao/School/CMPE283_Project/src/main/java/com/models/entity/Users.java
-/Users/kdao/School/CMPE283_Project/src/main/java/com/controller/HelloWorldController.java
 /Users/kdao/School/CMPE283_Project/src/main/java/com/models/dataaccess/DataAccess.java

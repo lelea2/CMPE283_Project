@@ -19,6 +19,7 @@ import org.openstack4j.model.compute.Server;
 import org.openstack4j.model.compute.ServerCreate;
 import org.openstack4j.model.network.Network;
 import org.openstack4j.openstack.OSFactory;
+import org.openstack4j.model.identity.Tenant;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.json.simple.JSONArray;
@@ -31,17 +32,18 @@ public class WebsiteHandlers {
     Services service = new Services();
     OSClient os = OSFactory.builder()
             .endpoint("http://localhost:5000/v2.0")
-            .credentials("admin","testing123")
+            .credentials("admin","sample")
             .tenantName("admin")
             .authenticate();
 
     /** Define constructor **/
     public WebsiteHandlers(){
-
+        System.out.println(">>>>>>>>>>>>> Initiate website handler <<<<<<<<<<<<<<<");
     }
-    public WebsiteHandlers(Services service) {
-        this.service = service;
 
+    public WebsiteHandlers(Services service) {
+        System.out.println(">>>>>>>>>>>>> Initiate website handler with services <<<<<<<<<<<<<<<");
+        this.service = service;
     }
 
     //create openstack instance
@@ -71,13 +73,14 @@ public class WebsiteHandlers {
             result.put("floatingnetwork", Constants.FLOATING_NETWORK);
             result.put("securitygroup", Constants.SECURITY_GROUP);
             result.put("keypair", Constants.KEYPAIR);
-            result.put("port", "eth1");
+            result.put("port", Constants.FIXED_ETH_NETWORK);
             service = db.getServiceByName(servicename);
             if(service != null) {
+                //Creating a small website
                 if(service.getServicetype().equalsIgnoreCase("smallWebsite")) {
                     imageId = webImage.getId();
                     Resources resource = new Resources();
-                    serverName = service.getUid()+":smallWebsite:"+service.getServiceid();
+                    serverName = service.getUid()+ ":smallWebsite:" + service.getServiceid();
                     //FloatingIP ip = os.compute().floatingIps().allocateIP("public");
                     String resource_status = createVM(imageId, serverName, networks);
                     resource.setDatecreated(service.getDatecreated());
@@ -89,7 +92,7 @@ public class WebsiteHandlers {
                     if(resource_status.equals(Constants.CREATED)){
                         db.addResource(Constants.RESOURCE_TYPE , resource, service);
                     }
-                } else {
+                } else { //Creating a big website
                     result.remove("fixedip");
                     result.remove("floatingip");
                     imageId = webImage.getId();
@@ -135,6 +138,7 @@ public class WebsiteHandlers {
                 //delete(id);
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -146,8 +150,7 @@ public class WebsiteHandlers {
      * @return
      */
     public String createVM(String imageId, String serverName, ArrayList<String> networks) {
-
-        String server_status =  "created";
+        String server_status = Constants.CREATED;
         Flavor flavor = os.compute().flavors().get("1");
         ServerCreate sc = Builders.server()
                 .name(serverName)
@@ -161,4 +164,12 @@ public class WebsiteHandlers {
         return server_status;
     }
 
+    //Create tenant
+    public String createTenant(String name, String description) {
+        System.out.println(">>>>>>>>> Create tenant <<<<<<<<<<<<<<<<<");
+        String tenant_status = Constants.CREATED;
+        Tenant tenant = os.identity().tenants()
+                .create(Builders.tenant().name(name).description(description).build());
+        return tenant_status;
+    }
 }

@@ -1,5 +1,6 @@
 package com.models.dataaccess;
 
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,26 +11,43 @@ import java.util.Date;
 import java.util.HashMap;
 
 import javax.sql.DataSource;
+import java.sql.*;
 
 import com.models.entity.Services;
 import com.models.entity.Users;
 import com.models.entity.Resources;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.models.utility.Constants;
 
 public class DataAccess {
-    private DataSource dataSource;
 
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
+    private Logger logger; // Logger
 
     Statement stmt = null;
     Connection connection = null;
 
+    /**
+     * Get connection
+     * @return DB connection
+     */
+    public Connection getConnection() {
+        Connection conn = null;
+        try {
+            Class.forName(Constants.JDBC_DRIVER);
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(Constants.DB_URL, Constants.USER, Constants.PASS);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return conn;
+    }
+
     public int saveToServices(String uid, String servicename, String servicetype,String date, String json) throws SQLException{
 
         int status = 0;
-        connection = dataSource.getConnection();
+        connection = getConnection();
         try {
             stmt = connection.createStatement();
             String sql;
@@ -44,7 +62,7 @@ public class DataAccess {
     }
 
     public Services getServiceByName(String name) throws SQLException{
-        Connection conn = dataSource.getConnection();
+        Connection conn = getConnection();
         Services service = new Services();
         try {
             stmt = conn.createStatement();
@@ -70,9 +88,16 @@ public class DataAccess {
         }
         return service;
     }
+
+    /**
+     * Create user
+     * @param user
+     * @return
+     * @throws SQLException
+     */
     public int createUser(Users user) throws SQLException {
         int status =0;
-        connection = dataSource.getConnection();
+        connection = getConnection();
         try{
             stmt = connection.createStatement();
             String sql;
@@ -85,9 +110,16 @@ public class DataAccess {
         }
         return status;
     }
+
+    /**
+     * Log user in
+     * @param user
+     * @return
+     * @throws SQLException
+     */
     public Users getUser(Users user) throws SQLException{
-        connection = dataSource.getConnection();
-        try{
+        try {
+            connection = getConnection();
             stmt = connection.createStatement();
             String sql;
             sql = "SELECT * FROM users WHERE uname='" + user.getUsername() +"' AND pwd='"+ user.getPassword()+"'";
@@ -100,14 +132,17 @@ public class DataAccess {
             rs.close();
             connection.close();
         } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             connection.close();
         }
         return user;
     }
+
+
     public int saveToJob(String json) throws SQLException{
         int status =0;
-        connection = dataSource.getConnection();
+        connection = getConnection();
         try{
             stmt = connection.createStatement();
             String sql;
@@ -120,9 +155,10 @@ public class DataAccess {
         }
         return status;
     }
+
     public int deleteJob(int jobid) throws SQLException {
         int status =0;
-        connection = dataSource.getConnection();
+        connection = getConnection();
         try{
             stmt = connection.createStatement();
             String deleteSQL = "DELETE FROM JOBS WHERE jobid ="+jobid;
@@ -141,7 +177,7 @@ public class DataAccess {
         ArrayList<String> dbservice = new ArrayList<String>();
         HashMap<String,ArrayList<String>> allservices = new HashMap<String,ArrayList<String>>();
 
-        connection = dataSource.getConnection();
+        connection = getConnection();
         try{
             stmt = connection.createStatement();
             String sql;
@@ -172,7 +208,7 @@ public class DataAccess {
     }
     public int addResource(String resourcetype , Resources resource, Services service) throws SQLException{
         int status =0;
-        connection = dataSource.getConnection();
+        connection = getConnection();
         try{
             stmt = connection.createStatement();
             String sql;
@@ -188,7 +224,7 @@ public class DataAccess {
     }
     public int startResource(int userid, int serviceid, int resourceid) throws SQLException {
         int status =0;
-        connection = dataSource.getConnection();
+        connection = getConnection();
         try{
             stmt = connection.createStatement();
             String sql;
@@ -206,7 +242,7 @@ public class DataAccess {
 
     public int stopResource(int resourceid) throws SQLException {
         int status =0;
-        connection = dataSource.getConnection();
+        connection = getConnection();
         try{
             stmt = connection.createStatement();
             String sql;
@@ -352,6 +388,18 @@ public class DataAccess {
         //Round up total to 2 decimal places
         total = Math.round(total*100.0)/100.0;
         return total;
+    }
+
+    /**
+     * Get logger
+     *
+     * @return Logger for this instance
+     */
+    protected Logger getLogger() {
+        if (this.logger == null) {
+            this.logger = LoggerFactory.getLogger(this.getClass());
+        }
+        return this.logger;
     }
 
 }
