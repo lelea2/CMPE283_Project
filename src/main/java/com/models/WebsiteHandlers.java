@@ -31,8 +31,8 @@ public class WebsiteHandlers {
 
     Services service = new Services();
     OSClient os = OSFactory.builder()
-            .endpoint("http://localhost:5000/v2.0")
-            .credentials("admin","sample")
+            .endpoint(Constants.OPENSTACK_URL)
+            .credentials(Constants.OPENSTACK_USER, Constants.OPENSTACK_PASSWORD)
             .tenantName("admin")
             .authenticate();
 
@@ -157,19 +157,29 @@ public class WebsiteHandlers {
                 .flavor(flavor.getId())
                 .image(imageId)
                 .networks(networks)
-                .addSecurityGroup("sample")
+                .addSecurityGroup("admin")
                 .addPersonality("/etc/motd", "Welcome to the new VM! Restricted access only")
                 .build();
         Server server = os.compute().servers().boot(sc);
         return server_status;
     }
 
-    //Create tenant
-    public String createTenant(String name, String description) {
-        System.out.println(">>>>>>>>> Create tenant <<<<<<<<<<<<<<<<<");
-        String tenant_status = Constants.CREATED;
-        Tenant tenant = os.identity().tenants()
-                .create(Builders.tenant().name(name).description(description).build());
-        return tenant_status;
+    //Get tenant
+    public String getTenantId() {
+        //Tenant tenant = os.identity().tenants().getByName(Constants.OPENSTACK_USER);
+        //return tenant.getId();
+        //List<? extends Image> images = os.compute().images().list();
+        ServerCreate sc = Builders.server()
+                .name("Ubuntu 2")
+                .flavor("flavorId")
+                .image("imageId")
+                .addPersonality("/etc/motd", "Welcome to the new VM! Restricted access only")
+                .build();
+
+        // Boot the Server
+        Server server = os.compute().servers().boot(sc);
+        //System.out.println(images);
+        return "testing";
     }
+
 }

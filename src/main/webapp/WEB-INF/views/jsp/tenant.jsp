@@ -5,13 +5,9 @@
     <title>Create Tenant</title>
 </head>
 <body>
-<h2>${createTenant}</h2>
-<form action="/createTenant" method="post">
-  Username: <input type="text" name="name">
-  <br>
-  Password: <input type="text" name="desc">
-  <br>
-  <button type="submit">Create Tenant</button>
-</form>
+<h2>${message}</h2>
+<p>Tenant name: ${name}</p>
+<p>Tenant Id: ${id}</p>
+<a href="/dashboard">Go to Dashboard</a>
 </body>
 </html>

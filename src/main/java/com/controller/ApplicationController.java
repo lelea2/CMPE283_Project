@@ -55,7 +55,7 @@ public class ApplicationController {
                 Cookie uid = new Cookie("uid", user.getUid().toString());
                 uid.setMaxAge(30 * 60);
                 response.addCookie(uid);
-                response.sendRedirect("createTenant"); //Create tenant after login
+                response.sendRedirect("tenant"); //Create tenant after login
             } else {
                 throw new Exception("user doesnot exist");
             }
@@ -100,22 +100,14 @@ public class ApplicationController {
         return "dashboard";
     }
 
-    @RequestMapping(value="/createTenant", method=RequestMethod.GET)
+    @RequestMapping(value="/tenant", method=RequestMethod.GET)
     public String tenant(ModelMap model) {
-        model.addAttribute("message", "Create Tenant");
+        WebsiteHandlers ws = new WebsiteHandlers();
+        String id = ws.getTenantId();
+        model.addAttribute("message", "Tenant");
+        model.addAttribute("name", Constants.OPENSTACK_USER);
+        model.addAttribute("id", id);
         return "tenant";
     }
 
-    @RequestMapping(value="/createTenant", method=RequestMethod.POST)
-    public void createTenant(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String desc = request.getParameter("desc");
-        try {
-            WebsiteHandlers ws = new WebsiteHandlers();
-            ws.createTenant(name, desc);
-        } catch(Exception ex) {
-            ex.printStackTrace();
-        }
-        response.sendRedirect("dashboard");
-    }
 }
