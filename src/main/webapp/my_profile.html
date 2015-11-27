@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMPE 283 Demo Project</title>
+    <link href='https://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/main_dashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/my_profile.css">
+</head>
+<body>
+<!-- Wrap Begin -->
+<div class="wrap">
+
+
+    <!-- Top Side Begin -->
+    <div class="topSide">
+        <h1>CMPE 283 Demo Project</h1>
+        <ul>
+            <li><img src="img/userIco.png" alt="userIco.png" /></li>
+            <li><span id="userNameShow" >User Name</span></li>
+            <li> | </li>
+            <li id="signOut"><a href="index.html" target="_self">Sign Out</a> </li>
+        </ul>
+    </div>
+    <!-- Top Side End -->
+
+
+
+    <!-- Left Side Begin -->
+    <div class="leftSide">
+        <ul class="leftSideMenu">
+            <li><a href="my_instances.html" target="_self">My Instances</a></li>
+            <li><a href="create_instances.html" target="_self">Create Instances</a></li>
+            <li><a href="my_profile.html" target="_self">My Profile</a></li>
+
+        </ul>
+    </div>
+    <!-- Left Side End -->
+
+
+
+    <!-- Right Side Begin -->
+    <div class="rightSide">
+        <div class="pageTitlePosition">
+            <h2>My Profile</h2>
+            <div class="contentPosition">
+                <ul>
+                    <li><span>Username:</span>Leonsaber</li>
+                    <li><span>First Name:</span>Leon</li>
+                    <li><span>Last Name:</span>Zhang</li>
+                    <li><span>Email:</span>123@test.com</li>
+                    <li>
+                        <form id="resetpwd">
+                            <ul>
+                                <li><span>Old Password:</span><input id= "oldpassword" type="password" required/></li>
+                                <li><span>New Password:</span><input id= "newpassword" type="password" required/></li>
+                                <li><span>Re-Password:</span><input id="repassword" type="password" required/></span></li>
+                                <li><button id="resetpwdButton" type="Submit">Submit</button></li>
+                            </ul>
+                        </form>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <!--Right Side End-->
+
+    <div class="clear"></div>
+</div>
+<!-- Wrap End -->
+</body>
+</html>

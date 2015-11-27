@@ -1,0 +1,65 @@
+.contentPosition{
+    padding-bottom: 50px;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+.contentPosition ul{
+    margin-top:20px;
+    color: #969696;
+    font-size:20px;
+}
+.contentPosition span{
+    margin-right:10px;
+}
+
+select{
+    float:right;
+    width: 300px;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 2px 2px 2px 20px;
+    border: none;
+    background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat left center;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 20px;
+    color: #969696;
+}
+input{
+    float:right;
+    width: 300px;
+    height: 30px;
+    border-style: none;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 20px;
+}
+
+#createButton{
+    height: 30px;
+    width:300px;
+    color: white;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size:20px;
+    background-color: lightgreen;
+    line-height: 20px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor:pointer;
+}
+#createform{
+    width: 500px;
+}
+
+/*Animation*/
+button:hover{
+    opacity: 0.7;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMPE 283 Demo Project</title>
+    <link href='https://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/main_dashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/list_style.css">
+</head>
+<body>
+<!-- Wrap Begin -->
+<div class="wrap">
+
+
+    <!-- Top Side Begin -->
+    <div class="topSide">
+        <h1>CMPE 283 Demo Project</h1>
+        <ul>
+            <li><img src="img/userIco.png" alt="userIco.png" /></li>
+            <li><span id="userNameShow" >User Name</span></li>
+            <li> | </li>
+            <li id="signOut"><a href="index.html" target="_self">Sign Out</a> </li>
+        </ul>
+    </div>
+    <!-- Top Side End -->
+
+
+
+    <!-- Left Side Begin -->
+    <div class="leftSide">
+        <ul class="leftSideMenu">
+            <li><a href="my_instances.html" target="_self">My Instances</a></li>
+            <li><a href="create_instances.html" target="_self">Create Instances</a></li>
+            <li><a href="my_profile.html" target="_self">My Profile</a></li>
+
+        </ul>
+    </div>
+    <!-- Left Side End -->
+
+
+
+    <!-- Right Side Begin -->
+    <div class="rightSide">
+        <div class="pageTitlePosition">
+            <h2>My Instances</h2>
+            <div class="contentPosition">
+                <!-- My Instances Begin -->
+                <ul class="projectClass">
+                    <li>
+                        <div class="projectListBox">
+                            <div class="projectListBoxLeftSide">
+                                <div class="projectNameTitle">
+                                    <a href="#">Instance Name</a>
+                                    <div class="operationPosition">
+                                        <select>
+                                            <option value="Test">Operations</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="projectStatusInfo">
+                                    <ul>
+                                        <li><span>Create Date:</span>12/22/2015</li>
+                                        <li><span>vCPU Hour:</span>890</li>
+                                        <li><span>Disk Hour:</span>890</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button class="projectListBoxRightSide projectJoinButton" type="button">Teminate Instances</button>
+                        </div>
+                    </li>
+
+                </ul>
+                <!-- My Instances End -->
+            </div>
+        </div>
+    </div>
+    <!--Right Side End-->
+
+    <div class="clear"></div>
+</div>
+<!-- Wrap End -->
+</body>
+</html>
