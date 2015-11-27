@@ -1,0 +1,124 @@
+/* Index Style CSS Document */
+/* Basic Style */
+
+html, body, #centerBoxPosition
+{
+    display:block;
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    font-family: 'Ropa Sans', sans-serif;
+    background-color: #f4f4f4
+}
+ol,ul{
+    list-style:none;
+}
+a{
+    text-decoration-line: none;
+}
+.class{
+    both: clear;
+}
+.wrap {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+/* Top Side Begin */
+.topSide{
+    position: fixed;
+    top:0;
+    height: 70px;
+    width: 100%;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #d9d9d9;
+    overflow: hidden;
+    z-index: 999;
+}
+h1{
+    margin-left: 50px;
+    letter-spacing: 2px;
+    font-size: 35px;
+    color: #969696;
+}
+/* Top Side End */
+
+/* Center Box Position Begin */
+#centerBoxPosition
+{
+    display: table;
+}
+
+#centerBox
+{
+    display: table-cell;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+#content
+{
+    margin: auto;
+    width: 800px;
+    height: 300px;
+    background-color:#d9d9d9;
+    border-radius: 10px;
+}
+/* Center Box Position End */
+
+/* Login Form Begin */
+form{
+    padding-top:30px;
+
+}
+li{
+    margin-top:40px;
+    height:35px;
+    width:700px;
+}
+span{
+    float:left;
+    font-size:30px;
+    color: white;
+    line-height: 35px;
+}
+input{
+    float: right;
+    height:30px;
+    width:550px;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 25px;
+    letter-spacing: 5px;
+    color: #969696;
+    border-style: none;
+    border-radius: 5px;
+}
+button{
+    height:35px;
+    width:200px;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 25px;
+    color: white;;
+    border-style: none;
+    border-radius: 5px;
+}
+#submit{
+    margin-left:150px;
+    float:left;
+    background-color:green;
+}
+#signUp{
+    float:right;
+    margin-right:100px;
+    background-color: green;
+}
+/* Login Form End */
+
+/* Animation*/
+button:hover{
+    opacity: 0.7;
+}

@@ -1,0 +1,160 @@
+@charset "utf-8";
+/* Sign Up Style CSS Document */
+/* Basic Style */
+
+html, body, #centerBoxPosition
+{
+    display:block;
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    font-family: 'Ropa Sans', sans-serif;
+    background-color: #f4f4f4
+}
+ol,ul{
+    list-style:none;
+}
+a{
+    text-decoration-line: none;
+}
+.class{
+    both: clear;
+}
+.wrap {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+/* Top Side Begin */
+.topSide{
+    position: fixed;
+    top:0;
+    height: 70px;
+    width: 100%;
+    background-color: #f4f4f4;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #d9d9d9;
+    overflow: hidden;
+    z-index: 999;
+}
+h1{
+    margin-left: 50px;
+    letter-spacing: 2px;
+    font-size: 35px;
+    color: #969696;
+}
+/* Top Side End */
+
+/* Center Box Position Begin */
+#centerBoxPosition
+{
+    display: table;
+}
+
+#centerBox
+{
+    display: table-cell;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+#content
+{
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    height: auto;
+    background-color:#d9d9d9;
+    border-style: none;
+    border-radius: 10px;
+}
+/* Center Box Position End */
+
+/* Sign Up Form Begin */
+.signUpForm, .resetpwdForm{
+    margin-bottom: 100px;
+    color: #969696;
+}
+h3{
+    font-style: italic;
+    font-size: 25px;
+}
+li{
+    margin-top: 10px;
+    width: 700px;
+    color: white;
+}
+span{
+    float: left;
+    height: 30px;
+    width: 150px;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: left;
+    color: white;
+}
+select{
+    margin-left: 10px;
+    width: 500px;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 2px 2px 2px 20px;
+    border: none;
+    background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat left center;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 20px;
+    color: #969696;
+}
+
+input{
+    margin-left: 10px;
+    width: 500px;
+    height: 30px;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 25px;
+    letter-spacing: 5px;
+    color: #969696;
+    border-style: none;
+    border-radius: 5px;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+button{
+    margin-top:10px;
+    margin-right:20px;
+    float:right;
+    height: 30px;
+    width:200px;
+    color: white;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size:20px;
+    background-color: dodgerblue;
+    line-height: 20px;
+    text-align: center;
+    border: solid 1px;
+    border-color: dodgerblue;
+    border-radius: 5px;
+    cursor:pointer;
+}
+/* Sgin up form End */
+
+/*Animation*/
+button:hover{
+    opacity: 0.7;
+}
